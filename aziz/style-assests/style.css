@@ -9,18 +9,35 @@
   stroke-width: 2px;
 }*/
 
-.links line {
-  stroke: #999;
-  stroke-opacity: 0.6;
+
+.nodeLinkContainer
+{
+    padding: 1em 1em 1em 0;
+
+    background: rgba(215, 215, 215, .2);
 }
 
-.nodes circle {
-  stroke: #fff;
-  stroke-width: 1.5px;
+.top-margin
+{
+    margin-top: 1em;
 }
 
-.tooltip{
-  background:#e0e0e0;
-  border:1px solid #777;
-  padding:1px 8px 1px 8px;
+.links line
+{
+    stroke: #999;
+    stroke-opacity: .6;
+}
+
+.nodes circle
+{
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.tooltip
+{
+    padding: 1px 8px 1px 8px;
+
+    border: 1px solid #777;
+    background: #e0e0e0;
 }
