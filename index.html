@@ -1,10 +1,307 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
 
-  </body>
+<head>
+    <meta charset="utf-8">
+    <title>AIH Visualization</title>
+    <!-- vendor css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="style-assests/style.css" media="screen" title="no title">
+</head>
+
+<body>
+
+    <div class="container top-margin nav-container">
+
+        <div class="col-md-7 top-margin-header">
+            <strong class="heading-size">Autoimmune Hepatitis (AIH) Visualization</strong>
+        </div>
+
+        <div class="col-md-5">
+            <ul class="nav nav-pills">
+                <li class="nav-item" id="nodeLinkNav">
+                    <a class="nav-link active link-font" href="#">Node Link</a>
+                </li>
+                <li class="nav-item" id="matrixNav">
+                    <a class="nav-link link-font" href="#">Matrix</a>
+                </li>
+                <li class="nav-item" id="documentationNav">
+                    <a class="nav-link link-font" href="#">Documentation</a>
+                </li>
+
+                <li class="nav-item" id="helpNav">
+                    <a class="nav-link link-font" href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="memberModalLabel">Welcome to the AIH (Autoimmune Hepatitis) Visualization!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Autoimmune Hepatitis (AIH) is a rare and incurable non-viral disease which affects the liver. Due to its rarity, support for patients with this disease is often provided over social media platforms to patients who ask health and medical questions about
+                        their disease and how it affects them.
+                        <br><br>
+                        <span><em>
+                    Our visualization depicts the links between 280 people who actively speak about this subject, to a set of 50 most frequently discussed topics</em>
+                    </span>
+                        <br><br>
+                        <span><em>
+                    Please select either 'Topics' ( <i class="fa fa-star" aria-hidden="true"></i> ) or 'Users'   ( <i class="fa fa-circle" aria-hidden="true"></i> ) to view their connections and details.
+                    </em>
+                    </span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container top-margin">
+
+        <div class="row" id="nodeLinkBigContainer">
+
+            <div class="col-md-6 nodeLinkContainer">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="searchAutoComplete" class="ui-widget">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="search" placeholder="e.g U10 or T11">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-default" type="button" id="searchButton">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" id="nodeLinkSection"></div>
+                </div>
+            </div>
+
+            <div id="infoBoxSection" class="col-md-6 infoBoxSection">
+
+            </div>
+        </div>
+
+    <div class="row" id="matrixSectionContainer">
+
+      <div id="matrixSection" class="col-md-7"></div>
+      <div class="col-md-5">
+        <br><br>
+        <p>The similarity matrix visualization is for displaying the similarity between topics. It can be ordered based on name or based on cluster by selecting the appropriate option in the drop-down menu.
+         The topics are clustered based on similarity of users talking about them.</p>
+         <div class="row">
+           <div class="col-md-4">
+           <p>Order Matrix by:-<p>
+           </div>
+           <div class="col-md-7">
+               <select class="form-control" id="order">
+                 <option value="name">Name</option>
+                 <option value="group">Cluster</option>
+               </select>
+             </div>
+       </div>
+      </div>
+
+      </div>
+
+
+  <!-- </div> -->
+
+
+
+  <div class="row" id="documentationRow">
+    <div class="col-md-12">
+      <strong>Design Process</strong>
+      <br>
+      <p>Since our visualization’s main objective was to effectively convey the links between users and the topics they talk the most about, we looked into different forms of graphs and node-link representations. Initially we considered implementing a bipartite graph but decided against it as it would not be effective to use it to show links between 50 topics and 280 users. We then decided that the best way to represent this data will be with node-link clusters, topics and users being different clusters with different shapes. We used size and color to encode the popularity of the users and the topics. The similarity matrix was unanimously chosen as the most appropriate way to represent the similarity between the topics. </p>
+  <br>
+
+  <strong>Initial Sketches</strong>
+  <div class="row">
+    <div class="col-md-3">
+      <img src="image-assests/sketch1.jpeg" alt="" class="img-thumbnail img-fluid">
+    </div>
+    <div class="col-md-3">
+      <img src="image-assests/sketch2.jpeg" alt="" class="img-thumbnail img-fluid">
+    </div>
+    <div class="col-md-3">
+      <img src="image-assests/sketch3.jpeg" alt="" class="img-thumbnail img-fluid">
+    </div>
+    <div class="col-md-3">
+      <img src="image-assests/sketch4.jpeg" alt="" class="img-thumbnail img-fluid">
+    </div>
+  </div>
+
+<br>
+      <strong>Rationale of Design Choices</strong>
+      <br>
+
+      <ul>
+      <li>To minimize scrolling as much as possible, we decided to place the cluster on the left and the information pertaining to the node(s) of interest will be displayed on the right.
+    </li>
+
+      <li>To have the maximum amount of screen space to display the information without cluttering the screen and causing a cognitive overload to the user, we used an overlay to have the description of our data and a link to the documentation.
+  </li>
+
+      <li>Information on the cards are displayed in a nested manner and not all at once for the same reason.</li>
+      <li>Tooltips are used to get a quick preview of the node’s information without having to click on it.</li>
+      <li>On the similarity matrix, hovering over a particular clustered cell on the matrix will highlight the topics to give the user feedback of their position on the matrix.
+</li>
+      </ul>
+
+  <br>
+
+  <strong>Insights</strong>
+<hr>
+<!-- <br> -->
+  <div class="row">
+    <div class="col-md-7">
+    <blockquote class="blockquote">U240 is the biggest user bubble with the highest rank and most number of comments made and received so he must be the Physician</blockquote>
+    </div>
+
+    <div class="col-md-5">
+      <img src="image-assests/u240.jpeg" alt="" class="img-thumbnail img-fluid">
+    </div>
+</div>
+<br>
+<div class="row">
+
+  <div class="col-md-5">
+    <img src="image-assests/screen3.jpeg" alt="" class="img-thumbnail img-fluid">
+  </div>
+
+  <div class="col-md-7">
+  <blockquote class="blockquote">There are few topics that have been repeated; Complementary-alternative medicine(2), Diet interacting with medications(2), Disease course-monitoring-testing(5), Goals of treatment(4), Hope and support - General(2), Side effects due to steroid drugs(2), Talking to the doctor(2), Using last resort medications(2.) Despite the topic name being the same, they have entirely different users talking about them.</blockquote>
+  </div>
+
+</div>
+
+<br>
+<div class="row">
+
+  <div class="col-md-7">
+  <blockquote class="blockquote">Because of the same reason topics with the same name are in different clusters.</blockquote>
+  </div>
+
+  <div class="col-md-5">
+    <img src="image-assests/matrix.png" alt="" class="img-thumbnail img-fluid">
+  </div>
+
+</div>
+<br>
+<div class="row">
+
+  <div class="col-md-5">
+    <img src="image-assests/screen4.jpeg" alt="" class="img-thumbnail img-fluid">
+  </div>
+
+  <div class="col-md-7">
+  <blockquote class="blockquote">Topics with the same name have different keywords</blockquote>
+  </div>
+
+</div>
+
+<br>
+<div class="row">
+
+  <div class="col-md-7">
+  <blockquote class="blockquote">Hope and Support is a largely spoken topic which did not come under the Physician’s top 5 most spoken topics</blockquote>
+  </div>
+
+  <div class="col-md-5">
+    <img src="image-assests/screen1.jpeg" alt="" class="img-thumbnail img-fluid">
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <p><strong>Video of the Visualization</strong></p>
+    <div class="col-md-2"></div>
+    <div class="col-md-8"><iframe width="560" height="315" src="https://www.youtube.com/embed/lcNBvElPeZw" frameborder="0" allowfullscreen></iframe></div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="row" id="helpContainer">
+
+  <div class="col-md-12">
+
+    <p class="lead">What can do you with this visualization?</strong>
+
+    <ul>
+      <strong>Clicking on the user nodes will give you:</strong>
+      <li>The top 5 topics they spoke about</li>
+      <li>Card on the right displays information of</li>
+      <ul>
+        <li>Rank of user</li>
+        <li>Posts created by the user
+</li>
+        <li>Comments received</li>
+        <li>Comments made by the user
+</li>
+        <li>On clicking the down arrow symbol you can get a list of top 5 topics the user spoke about
+</li>
+      </ul>
+    </ul>
+
+    <ul>
+      <strong>Clicking on the topic nodes will give you:</strong>
+      <li>All the users that have the topic in their top 5 most spoken topics
+</li>
+      <li>Card on the right displays information of</li>
+      <ul>
+        <li>Rank of topic
+</li>
+        <li>User popularity of topic
+    </li>
+        <li>On clicking the down arrow symbol you can get a list of top 10 users and keywords associated to that topic</li>
+      </ul>
+    </ul>
+
+    <strong>On the search tab you can search for user and topic by ID</strong>
+
+<br>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+    <!-- vendor js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="script-assests/tether.min.js" charset="utf-8"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- custom js -->
+    <script src="script-assests/script.js" charset="utf-8"></script>
+    <script src="script-assests/connectedNode.js" charset="utf-8"></script>
+
+</body>
+
 </html>
