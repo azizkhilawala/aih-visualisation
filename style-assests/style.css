@@ -1,0 +1,100 @@
+.nodeLinkContainer
+{
+    padding: 1em 1em 1em 0;
+
+    /*background: rgba(215, 215, 215, .2);*/
+}
+body{
+  font-family: sans-serif;
+}
+.top-margin
+{
+    margin-top: 1em;
+}
+
+.links line
+{
+    stroke: #999;
+    stroke-opacity: .6;
+}
+
+.nodes circle
+{
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.tooltip
+{
+    padding: 1px 8px 1px 8px;
+    font-weight: bold;
+    /*border: 1px solid #777;
+    background: #e0e0e0;*/
+}
+
+.open
+{
+    aria-controls: 'collapseExample';
+    aria-hidden: 'true';
+    data-toggle: 'collapse'
+    data-target:'#collapseExample';
+}
+
+.drop-down
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.modal-dialog
+{
+    width: 800px;
+}
+
+.background
+{
+    fill: #eee;
+}
+
+line
+{
+    stroke: #fff;
+}
+
+text
+{
+    font: 10px sans-serif;
+}
+
+text.active
+{
+    fill: red;
+}
+
+body
+{
+    /*background: rgba(217,217,217,1);*/
+    background: rgba(51,51,51,0.1);
+}
+
+.link-font
+{
+    font-size: 14px;
+}
+
+.nav-container
+{
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid rgba(31, 32, 30, .1);
+}
+
+.heading-size
+{
+    font-size: 17px;
+}
+
+.top-margin-header
+{
+    margin-top: 5px;
+}
